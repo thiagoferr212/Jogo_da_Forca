@@ -4,20 +4,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Palavra {
-
+public class Palavras {
+    
     private Set<String> listaDePalavras;
-
-    public Palavra() {
-        this.listaDePalavras = new HashSet<>(Arrays.asList("Carro", "Abelha", "Livro", "Quadro", "Caneta"));
-    }
-
+    
     public Set<String> getListaDePalavras() {
         return listaDePalavras;
     }
-
-    public void setListaDePalavras(Set<String> listaDePalavras) {
-        this.listaDePalavras = listaDePalavras;
+    public void setListaDePalavras() {
+        this.listaDePalavras = new HashSet<>(Arrays.asList("Carro", "Abelha", "Livro", "Quadro", "Caneta"));
     }
 
     @Override
@@ -36,7 +31,7 @@ public class Palavra {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Palavra other = (Palavra) obj;
+        Palavras other = (Palavras) obj;
         if (listaDePalavras == null) {
             if (other.listaDePalavras != null)
                 return false;
@@ -44,6 +39,7 @@ public class Palavra {
             return false;
         return true;
     }
+
 
     
 }
