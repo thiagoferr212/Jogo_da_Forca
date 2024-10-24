@@ -8,11 +8,11 @@ public class Palavras {
     
     private Set<String> listaDePalavras;
     
+    public Palavras() {
+        this.listaDePalavras = new HashSet<>(Arrays.asList("Carro", "Abelha", "Livro", "Quadro", "Caneta"));
+    }
     public Set<String> getListaDePalavras() {
         return listaDePalavras;
-    }
-    public void setListaDePalavras() {
-        this.listaDePalavras = new HashSet<>(Arrays.asList("Carro", "Abelha", "Livro", "Quadro", "Caneta"));
     }
 
     @Override
@@ -39,7 +39,6 @@ public class Palavras {
             return false;
         return true;
     }
-
 
     
 }
