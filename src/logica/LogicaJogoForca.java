@@ -1,13 +1,12 @@
-package controller;
+package logica;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import entities.Palavras;
 
-import model.Palavras;
-
-public class JogoForca {
+public class LogicaJogoForca {
     
     Random random = new Random();
     Palavras palavras = new Palavras();
@@ -15,15 +14,13 @@ public class JogoForca {
     private String[] palavraEmProgresso;
     List<String> listaLetrasUtilizadas = new ArrayList<>();
 
-    public JogoForca() {
+    public LogicaJogoForca() {
         this.palavraAleatoria = palavraAleatoriaForca().toUpperCase();
         this.palavraEmProgresso = new String[palavraAleatoria.length()];
         for (int i = 0; i < palavraAleatoria.length(); i++) {
             palavraEmProgresso[i] = "_";
         }
     }
-
-    
 
     public String palavraAleatoriaForca(){
         List<String> listaPalavras = new ArrayList<>(palavras.getListaDePalavras());
@@ -42,7 +39,7 @@ public class JogoForca {
         inputUsuario = inputUsuario.toUpperCase();
 
         if(listaLetrasUtilizadas.contains(inputUsuario)){
-            System.out.println("Esta letra já foi informada!");
+            System.out.println("ESTA LETRA JÁ FOI INFORMADA, DIGITE OUTRA LETRA.");
             return;
         }
         else{
@@ -54,19 +51,14 @@ public class JogoForca {
                 }
             }
             else{
-                System.out.println("Letra Incorreta!");
+                System.out.println("LETRA INCORRETA!");
             }
         }
 
+        System.out.println();
         listaLetrasUtilizadas.add(inputUsuario);
-
-        exibirPalavraAleatoria();
-        System.out.println(" ");
-        System.out.println(" ");
-        System.out.println("Letras utilizadas: " + listaLetrasUtilizadas);
+        System.out.println("LETRAS UTILIZADAS: " + listaLetrasUtilizadas);
     }
-
-
 
     public Random getRandom() {
         return random;
@@ -96,5 +88,4 @@ public class JogoForca {
         return listaLetrasUtilizadas;
     }
 
-    
 }
