@@ -51,11 +51,10 @@ public class LogicaJogoForca {
                 }
             }
             else{
-                System.out.println("LETRA INCORRETA!");
+                System.out.println("A PALAVRA NÃO CONTÉM ESTA LETRA!\n");
             }
         }
 
-        System.out.println();
         listaLetrasUtilizadas.add(inputUsuario);
         System.out.println("LETRAS UTILIZADAS: " + listaLetrasUtilizadas);
     }

@@ -1,5 +1,7 @@
-package jogo;
+package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import logica.LogicaJogoForca;
@@ -9,7 +11,8 @@ public class JogoForca {
         LogicaJogoForca jg = new LogicaJogoForca();
         BonecoForca boneco = new BonecoForca();
         Scanner sc = new Scanner(System.in);
-
+        List<String> listaDeLetras = new ArrayList<>();
+        
         int tentativasRestantes = 6;
         String PalavraAleatoria = jg.getPalavraAleatoria();
         
@@ -42,17 +45,17 @@ public class JogoForca {
                 String palavraDaForca = palavraEmProgresso.replace(" ", "");
                 
                 if (palavraDaForca.equalsIgnoreCase(PalavraAleatoria)) {
-                    System.out.println("PARABÉNS!!! VOCÊ ACERTOU A PALAVRA: " + "'" + PalavraAleatoria + "'");
+                    System.out.println("PARABÉNS!!! VOCÊ ACERTOU A PALAVRA: " + "'" + PalavraAleatoria + "'\n");
                     break;
                 }
                 
-                if (!PalavraAleatoria.contains(inputUsuario)) {
-                    tentativasRestantes--;
+                if(!listaDeLetras.contains(inputUsuario)){
+                    if (!PalavraAleatoria.contains(inputUsuario)) {
+                        tentativasRestantes--;
+                    }
                 }
-                // CORRIGIR BUG DE PALVRAS QUE JÁ FORAM INFORMADAS REDUSINDO A QUANTIDADE DE TENTATIVAS.
-                // if(!jg.getListaLetrasUtilizadas().contains(inputUsuario)){
-                //     tentativasRestantes--;
-                // }
+
+                listaDeLetras.addAll(jg.getListaLetrasUtilizadas()); 
                 
                 boneco.exibirBoneco(tentativasRestantes);
                 jg.exibirPalavraAleatoria();
@@ -73,7 +76,7 @@ public class JogoForca {
         }
         
         if (tentativasRestantes == 0) {
-            System.out.println("FIM DE JOGO, A PALAVRA ERA: " + "'" + PalavraAleatoria + "'");
+            System.out.println("FIM DE JOGO, A PALAVRA ERA: " + "'" + PalavraAleatoria + "'\n");
         }
         
         sc.close();

@@ -1,4 +1,4 @@
-package jogo;
+package game;
 
 public class BonecoForca {
     
@@ -7,8 +7,8 @@ public class BonecoForca {
             ______
             |    |
             |    O
-            |   /|\
-            |   / \
+            |   /|\\
+            |   / \\
             |
             |
         =========
@@ -17,7 +17,7 @@ public class BonecoForca {
             ______
             |    |
             |    O
-            |   /|\
+            |   /|\\
             |   /
             |
             |
@@ -27,7 +27,7 @@ public class BonecoForca {
             ------
             |    |
             |    O
-            |   /|\
+            |   /|\\
             |
             |
             |
