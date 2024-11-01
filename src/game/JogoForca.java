@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import DAO.PalavraDAO;
 import logica.LogicaJogoForca;
 
 public class JogoForca {
     public static void main(String[] args) {
+
+        PalavraDAO pl = new PalavraDAO();
         LogicaJogoForca jg = new LogicaJogoForca();
         BonecoForca boneco = new BonecoForca();
         Scanner sc = new Scanner(System.in);

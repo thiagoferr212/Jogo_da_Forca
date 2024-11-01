@@ -1,20 +1,38 @@
-package entities;
+package entity;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import DAO.PalavraDAO;
 
 public class Palavras {
     
     private Set<String> listaDePalavras;
+    private String categoria;
+    private PalavraDAO pala;
     
     public Palavras() {
-        this.listaDePalavras = new HashSet<>(Arrays.asList("Carro", "Abelha", "Livro", "Quadro", "Caneta"));
+        this.listaDePalavras = new HashSet<>();
+        this.pala = new PalavraDAO();
+        adicionarPalavras();
     }
     public Set<String> getListaDePalavras() {
         return listaDePalavras;
     }
+    
+    public String getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
+    public void adicionarPalavras(){
+        pala.buscarPalavra();
+
+        listaDePalavras.addAll(pala.palavrasDaTabelaMap.keySet());
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -40,5 +58,4 @@ public class Palavras {
         return true;
     }
 
-    
 }
