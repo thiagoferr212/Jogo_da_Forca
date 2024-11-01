@@ -8,18 +8,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import conexao.Conexao;
+import entity.Palavras;
 
 public class PalavraDAO {
 
-    public Map<String, String> palavrasDaTabelaMap = new HashMap<>();
-
-    public void buscarPalavra(){
-
+    public static void buscarPalavra(Palavras palavras) {
+        Map<String, String> palavrasDaTabelaMap = new HashMap<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultset = null;
-        
-        try{
+
+        try {
             connection = Conexao.getConexao();
             String sql = "SELECT * FROM palavras";
             statement = connection.prepareStatement(sql);
@@ -32,22 +31,19 @@ public class PalavraDAO {
                 palavrasDaTabelaMap.put(palavra, categoria);
             }
 
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
+            // Adiciona as palavras e suas categorias ao objeto Palavras
+            palavras.setPalavrasComCategoria(palavrasDaTabelaMap);
 
-        finally{
-            try{
-                if(resultset != null) resultset.close();
-                if(statement != null) statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultset != null) resultset.close();
+                if (statement != null) statement.close();
                 if (connection != null) connection.close();
-            }
-            catch(SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
     }
-    
 }
